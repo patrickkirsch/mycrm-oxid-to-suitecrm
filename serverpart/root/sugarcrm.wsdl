@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:tns="https://shop.yourshopdomain.de/soap/sugarolservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="https://shop.yourshopdomain.de/soap/sugarolservice">
+    <types>
+        <xsd:schema targetNamespace="https://shop.yourshopdomain.de/soap/sugarolservice">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+        </xsd:schema>
+    </types>
+    <message name="get_usersRequest">
+        <part name="username" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+    <message name="get_usersResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="update_usersRequest">
+        <part name="username" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+        <part name="update_array" type="xsd:string"/>
+    </message>
+    <message name="update_usersResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="check_connectionRequest">
+        <part name="username" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+    </message>
+    <message name="check_connectionResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <portType name="sugarolservicePortType">
+        <operation name="get_users">
+            <input message="tns:get_usersRequest"/>
+            <output message="tns:get_usersResponse"/>
+        </operation>
+        <operation name="update_users">
+            <input message="tns:update_usersRequest"/>
+            <output message="tns:update_usersResponse"/>
+        </operation>
+        <operation name="check_connection">
+            <input message="tns:check_connectionRequest"/>
+            <output message="tns:check_connectionResponse"/>
+        </operation>
+    </portType>
+    <binding name="sugarolserviceBinding" type="tns:sugarolservicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="get_users">
+            <soap:operation soapAction="https://shop.yourshopdomain.de/sugar_sync.php/get_users" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="update_users">
+            <soap:operation soapAction="https://shop.yourshopdomain.de/sugar_sync.php/update_users" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="check_connection">
+            <soap:operation soapAction="https://shop.yourshopdomain.de/sugar_sync.php/check_connection" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.mycrmspace.de/"
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="sugarolservice">
+        <port name="sugarolservicePort" binding="tns:sugarolserviceBinding">
+            <soap:address location="https://shop.yourshopdomain.de/sugar_sync.php"/>
+        </port>
+    </service>
+</definitions>

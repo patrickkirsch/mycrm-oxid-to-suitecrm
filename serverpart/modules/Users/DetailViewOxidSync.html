@@ -1,0 +1,131 @@
+<!-- BEGIN: main -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<form action="index.php" method="post" name="DetailViewOxidSync" id="form">
+    <input type="hidden" name="module" value="Users">
+    <input type="hidden" name="record" value="{ID}">
+    <input type="hidden" name="isDuplicate" value=false>
+    <input type="hidden" name="action">
+    <input type="hidden" name="user_name" value="{USER_NAME}">
+    <input type="hidden" name="password_change">
+    <input type="hidden" name="old_password">
+    <input type="hidden" name="new_password">
+    <input type="hidden" name="return_module">
+    <input type="hidden" name="return_action">
+    <input type="hidden" name="return_id">
+    <tr><td nowrap style="padding-bottom: 2px;">
+    <input title='Edit [Alt+E]' accessKey='E' class='button' onclick="this.form.return_module.value='Users'; this.form.return_action.value='DetailViewOxidSync'; this.form.return_id.value='{ID}'; this.form.action.value='EditViewOxidSync'" type='submit' name='Edit' value='  Edit  '> 
+    {BUTTONS111}</td></tr> 
+</form>
+</table>
+
+
+
+<p>	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabDetailView">
+
+    <tr>
+    <th class="tabDetailViewDL" colspan="4" align="left"><h4 class="tabDetailViewDL">{MOD.LBL_OXOXID_SRV_SETTINGS}</h4></th>
+    </tr>
+
+    
+
+    <tr>
+    <td width="25%" valign="top" class="tabDetailViewDL"><slot></slot><slot>{MOD.LBL_OXOXID_URL}&nbsp;</slot></td>
+    <td width="25%" valign="top" class="tabDetailViewDF"><slot> {OXID_URL} &nbsp;</slot></td>   
+    <td width="50%" valign="top" class="tabDetailViewDF"><slot>&nbsp;</slot> </td
+    
+    
+        </tr>
+        
+         <tr>
+    <td width="25%" valign="top" class="tabDetailViewDL"><slot></slot><slot>{MOD.LBL_OXOXID_USRNAME}&nbsp;</slot></td>
+    <td width="25%" valign="top" class="tabDetailViewDF"><slot>{OXID_USERNAME} &nbsp;</slot></td>   
+    <td width="50%" valign="top" class="tabDetailViewDF"><slot>&nbsp;</slot> </td
+    
+    
+        </tr>
+   
+    <tr>
+     <th class="tabDetailViewDL" colspan="4" align="left"><h4 class="tabDetailViewDL">{MOD.LBL_OXSYNC_DIRECTION}</h4></th>
+    </tr>
+    
+    <tr>
+    <td width="25%" valign="top" class="tabDetailViewDL"><slot></slot><slot>{MOD.LBL_OXSEND_FROM_SUGAR_TO_OXID}&nbsp;</slot></td>
+    <td width="25%" valign="top"  class="tabDetailViewDF"><slot><input disabled type=checkbox {SO_SEND_SUGAR_TO_OXID}>&nbsp;</slot></td>
+    <td width="50%" valign="top" class="tabDetailViewDF"><slot>{MOD.LBL_OXUPDT_TO_OXID}&nbsp;</slot> </td
+    
+    
+        </tr>
+  
+    <tr>
+        <td width="25%" valign="top" class="tabDetailViewDL"><slot>{MOD.LBL_OXCONFLICT_RESOLUTION}&nbsp;</slot></td>
+        <td width="25%" valign="top" class="tabDetailViewDF"><slot>
+        {MOD.LBL_OXSUGAR_WINS} 
+        <input   value="sugar_wins" name='conflict_resolution' disabled type="radio" {SO_SUGAR_WINS}  tabindex='2' size='15' maxlength='25' >
+        {MOD.LBL_OXOXID_WINS}
+        <input  value="oxid_wins" name='conflict_resolution' disabled type="radio" {SO_OXID_WINS}  tabindex='2' size='15' maxlength='25' >&nbsp;</slot></td>
+        <td width="50%" valign="top" class="tabDetailViewDF"><slot>{MOD.LBL_OXCONF_WHO_WINS}&nbsp;</slot></td>
+     
+     
+         </tr>
+  
+        
+    <tr>
+        <td width="25%" valign="top" class="tabDetailViewDL"><slot>{MOD.LBL_OXCONFLICT_EMAIL}</slot> </td
+    <td width="25%"  valign="top" class="tabDetailViewDF"><slot>{CONFLICT_EMAIL}&nbsp;</slot> </td>
+    <td width="50%" valign="top" class="tabDetailViewDF"><slot>{MOD.LBL_OXCONF_EMAIL_TOSEND}&nbsp;</slot> </td
+
+                           
+        </tr>
+  
+    <tr>
+        <td width="25%" valign="top" class="tabDetailViewDL"><slot>{MOD.LBL_OXOPPORTUNITY_ACC}&nbsp;</slot></td>
+     <td width="25%" valign="top" class="tabDetailViewDF"><slot> {DEFAULT_ACCOUNT_NAME} &nbsp;</slot></td>
+     <td width="50%" valign="top" class="tabDetailViewDF"><slot>{MOD.LBL_OXRELATED_OPP_ACC}&nbsp;</slot> </td
+          
+         </tr>
+  
+
+ <!--
+        &nbsp;&nbsp; &nbsp;<slot>{MOD.LBL_FAXSMS_SMS_PREFIX}:</slot>
+    &nbsp;&nbsp; &nbsp;<slot>{FAXSMS_SMS_PREFIX_C}</slot>  
+ -->     
+    
+   </table>
+      <!-- <table width="100%" border="1" cellspacing="0" cellpadding="0" class="tabDetailView" >  
+      
+   <!--
+       <tr>
+    <th colspan='4' align="left" class="tabDetailViewDL" width="100%" valign="top"><h4 class="tabDetailViewDL"><slot>{MOD.DIMDIM_SETTINGS}</slot></h4></th>
+    </tr>
+       <tr>
+    <td width="25%" valign="top" class="tabDetailViewDL"><slot>{MOD.DIMDIM_DISPALY_NAME}:</slot></td>
+    <td width="20%" valign="top" class="tabDetailViewDF"><slot>{DIMDIM_VAR1_C}&nbsp;</slot></td>
+       <td width="50%" class="tabDetailViewDF"><slot>{MOD.DIMDIM_DISPALY_NAME_EXPLAIN}</slot></td>    
+     </tr>
+     
+        <tr>
+    <th colspan='6' align="left" class="tabDetailViewDL" width="100%" valign="top"><h4 class="tabDetailViewDL"><slot>{MOD.USER_FAXSMS_SETTINGS}&nbsp;</slot></h4></th>
+    </tr>
+ <tr>
+ <td colspan=4>
+ 
+      <tr>
+    <td width="25%"  valign="top" class="tabDetailViewDL"><slot>{MOD.USER_FAXSMS_SETTINGS1}</slot></td>
+    <td width="35%" valign="top" class="tabDetailViewDF"><slot><input name='allowusers' type="checkbox" disabled {ALLOWUSERS} tabindex='2' size='15' maxlength='25' >&nbsp;</slot></td>
+       <td width="40%" clospan=2 class="tabDetailViewDF"><slot>&nbsp;{MOD.USER_FAXSMS_SETTINGS2}</slot></td>    
+
+    </tr> 
+
+
+    
+
+      
+       </table>     -->
+          
+<!-- END: main -->
+
+<!-- BEGIN: user_settings -->
+                 
+  
+
+<!-- END: user_info -->

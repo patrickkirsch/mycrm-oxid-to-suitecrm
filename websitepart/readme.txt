@@ -1,0 +1,4 @@
+ - run the 2 queries from file sql.txt in to oxid eshop mysql database
+ - copy the file sugar_sync.php in the root folder of the oxid eshop
+ - edit file sugarcrm.wsdl and put your Shop URL 
+    - esp. the soap address location field, see: shop.yourshopdomain.net

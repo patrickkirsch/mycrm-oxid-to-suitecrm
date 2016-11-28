@@ -1,0 +1,238 @@
+
+<!-- BEGIN: main -->
+{ROLLOVER}
+<script type="text/javascript" lang="Javascript" src="modules/InboundEmail/InboundEmail.js"></script>
+{ERROR_STRING}
+<form name="EditView" id="EditView" method="POST" action="index.php">
+	<input type="hidden" name="display_tabs_def">
+	<input type="hidden" name="hide_tabs_def">
+	<input type="hidden" name="remove_tabs_def">
+	<input type="hidden" name="module" value="Administration">
+	<input type="hidden" name="record" value="{ID}">
+	<input type="hidden" name="action">
+	<input type="hidden" name="return_module" value="Administration">
+	<input type="hidden" name="return_id" value="{RETURN_ID}">
+	<input type="hidden" name="return_action" value="DetailViewDimdim">
+	<input type="hidden" name="password_change" value="false">
+	<input type="hidden" name="old_password">
+    <input type="hidden" name="new_password">
+	<input type="hidden" name="user_name" value="{USER_NAME}">
+	<input type="hidden" name="type" value="{REDIRECT_EMAILS_TYPE}">
+
+<script type="text/javascript">   
+  function open_check(url,uss,pass) {
+
+    URL="check_sync_oxid.php?uss="+uss+"&pass="+pass+"&oxid_url="+url;
+    windowName = 'CheckOxidConnection';
+    windowFeatures = 'width=300' + ',height=200'     + ',toolbar=no,menubar=no,location=no,resizable=0,scrollbars=0';
+    
+    win = window.open(URL, windowName, windowFeatures);
+    //alert(URL);
+    if(window.focus)
+    {
+        // put the focus on the popup if the browser supports the focus() method
+        win.focus();
+    }
+}
+</script>
+    
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td style="padding-bottom: 2px;">
+			<input	title="{APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{APP.LBL_SAVE_BUTTON_KEY}" 
+					class="button" onclick="this.form.action.value='SaveOxidSync';  "
+					type="submit" name="button" value="  {APP.LBL_SAVE_BUTTON_LABEL}  " >
+			<input	title="{APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{APP.LBL_CANCEL_BUTTON_KEY}" 
+					class="button" onclick="this.form.action.value='{RETURN_ACTION}'; this.form.module.value='{RETURN_MODULE}'; this.form.record.value='{RETURN_ID}'" 
+					type="submit" name="button" value="  {APP.LBL_CANCEL_BUTTON_LABEL}  ">
+			{CHANGE_PASSWORD_BUTTON111111}
+		</td>
+		<td align="right" nowrap><span class="required">{APP.LBL_REQUIRED_SYMBOL}</span> {APP.NTC_REQUIRED}</td>
+	</tr>
+</table>
+
+<div id="basic">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+	    <tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="{tabForm}">
+<!--
+	        <tr>
+    <th colspan='4' align="left" class="tabDetailViewDL" width="100%" valign="top"><h4 class="tabDetailViewDL"><slot>{MOD.DIMDIM_ACC_SETT}</slot></h4></th>
+    </tr>
+   --> 
+
+                <tr>
+    <th colspan='4' align="left"  width="100%" valign="top" scope="row"><h4 {h4class} ><slot>{MOD.LBL_OXOXID_SRV_SETTINGS}</slot></h4></th>
+    </tr>
+ 
+
+ 
+                <tr>
+                    <td width="15%" scope="row" class="dataLabel"><slot>{MOD.LBL_OXOXID_URL}</slot></td>
+                    <td width="35%" class="dataField"><slot><input name='oxid_url' id='oxid_url'  tabindex='1' size='55' maxlength='255' type="textbox" value="{OXID_URL}"></slot></td>
+                    <td width="15%"  class="dataLabel"><slot>&nbsp;</slot>
+                      <td width="35%"  class="dataLabel"><slot>&nbsp;</slot>   
+                    </td>
+                   </td>  
+
+
+                </tr>
+
+                <tr>
+                    <td width="15%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXOXID_USRNAME}</slot></td>
+                    <td width="35%" class="dataField"><slot>
+                    <input name='oxid_username' id='oxid_username'  tabindex='1' size='25' maxlength='255' type="textbox" value="{OXID_USERNAME}">
+                    </slot></td>
+                    
+                    <td width="15%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXOXID_PASS}
+                     <td width="35%" class="dataLabel"><slot>
+                      <input name='oxid_password' id='oxid_password'  tabindex='1' size='25' maxlength='255' type="password" value="{OXID_PASSWORD}">
+                            <input title="Check [Alt+C]"
+                    type='button'
+                    accessKey="C"
+                    class="button"
+                    onClick='open_check(this.form.oxid_url.value, this.form.oxid_username.value,this.form.oxid_password.value, "Popup", 400, 300,  "", "", "",""," ", "");'
+                    name="button" value="  Test Settings  " >  
+                    
+                    </slot></td>
+                   
+
+
+                </tr>   
+                
+                    <tr>
+                    <td width="25%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXOPPORTUNITY_ACC}</slot></td>
+                    <td width="20%" class="dataField"><slot>
+                    
+<input type="text" name="account_name" class="sqsEnabled" tabindex="0" id="account_name" size="" value="{DEFAULT_ACCOUNT_NAME}" title='' autocomplete="off"  > 
+<input type="hidden" name="account_id" id="account_id" value="{DEFAULT_ACCOUNT_ID}"> 
+<input type="button" name="btn_account_name" tabindex="0" title="Select [Alt+T]" accessKey="T" class="button" value="Select" onclick='open_popup("Accounts", 600, 400, "", true, false, {"call_back_function":"set_return","form_name":"EditView","field_to_name_array":{"id":"account_id","name":"account_name","billing_address_street":"primary_address_street","billing_address_city":"primary_address_city","billing_address_state":"primary_address_state","billing_address_postalcode":"primary_address_postalcode","billing_address_country":"primary_address_country","phone_office":"phone_work"}}, "single", true);'> 
+<input type="button" name="btn_clr_account_name" tabindex="0" title="Clear [Alt+C]" accessKey="C" class="button" onclick="this.form.account_name.value = ''; this.form.account_id.value = '';" value="Clear">                     
+                    
+                    </slot></td>
+                    <td width="55%" colspan=2 class="dataLabel"><slot>{MOD.LBL_OXRELATED_OPP_ACC}</slot></td>
+                   </td>  
+
+
+                </tr>                 
+  
+             
+</table>
+</td>
+</tr>
+
+        <tr>
+        <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="{tabForm}">                
+                
+
+                <tr>
+    <th colspan='6' align="left"  width="100%" valign="top" scope="row"><h4 {h4class} ><slot>{MOD.LBL_OXSYNC_DIRECTION}</slot></h4></th>
+    </tr>
+ 
+    			<tr>
+					<td width="25%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXSEND_FROM_SUGAR_TO_OXID}</slot></td>
+					<td width="20%" class="dataField"><slot><input name='so_send_sugar_to_oxid' id='so_send_sugar_to_oxid'  tabindex='1' size='25' maxlength='255' type="checkbox" {SO_SEND_SUGAR_TO_OXID}></slot></td>
+                    <td width="55%" class="dataLabel"><slot>{MOD.LBL_OXUPDT_TO_OXID}</slot></td>
+                   </td>  
+
+
+				</tr>
+
+                <tr>
+                    <td width="25%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXCONFLICT_RESOLUTION}</slot></td>
+                    <td width="20%" class="dataField"><slot>
+{MOD.LBL_OXSUGAR_WINS}  
+<input   value="sugar_wins" name='conflict_resolution' type="radio" {SO_SUGAR_WINS}  tabindex='2' size='15' maxlength='25' >
+ {MOD.LBL_OXOXID_WINS}  
+<input  value="oxid_wins" name='conflict_resolution' type="radio" {SO_OXID_WINS}  tabindex='2' size='15' maxlength='25' >
+
+                    
+                    <td width="55%"  class="dataLabel"><slot>{MOD.LBL_OXCONF_WHO_WINS}</slot></td>
+                   </td>  
+
+
+                </tr> 
+                
+                <tr>
+                    <td width="25%"  scope="row" class="dataLabel"><slot>{MOD.LBL_OXCONFLICT_EMAIL}</slot></td>
+                    <td width="20%" class="dataField"><slot>
+                    
+                    <input type="text" name="conflict_email"  tabindex="0" id="conflict_email" size="" value="{CONFLICT_EMAIL}" title=''   >
+                    
+                    </slot></td>
+                    <td width="55%" class="dataLabel"><slot>{MOD.LBL_OXCONF_EMAIL_TOSEND}</slot></td>
+                   </td>  
+
+
+                </tr>                
+
+
+
+   
+     </table>
+   </tr>
+   </table>
+   
+     <div id="settings"> 
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="{tabForm}">     
+            <tr>
+    <th colspan='4' align="left" class="tabDetailViewDL" width="100%" valign="top"><h4 class="tabDetailViewDL"><slot>{MOD.DIMDIM_SETTINGS}</slot></h4></th>
+    </tr>
+                
+      <tr>
+    <td width="25%" class="dataLabel"><slot>{MOD.DIMDIM_DISPALY_NAME}:</slot></td>
+    <td width="20%" class="dataLabel"><slot><input  name='dimdim_var1_c' type="text" value='{DIMDIM_VAR1_C}'  tabindex='2' size='15' maxlength='25' >&nbsp;</slot></td>
+                    <td width="50%" class="dataField"><slot>{MOD.DIMDIM_DISPALY_NAME_EXPLAIN}</slot></td>
+                </tr>
+  
+
+ 
+    <script type="text/javascript">
+
+    </script>
+              <tr>
+    <td width="15%" class="dataLabel"><slot>{MOD.GOOGLE_NEWFILES}:</slot></td>
+    <td width="35%" class="dataLabel"><slot><input name='google_mdocsnewfiles_c' type="text" id='jscal_field4' value="{GOOGLE_MDOCSNEWFILES}" tabindex='2' size='15' maxlength='25' >&nbsp;<img src="themes/default/images/jscalendar.gif" alt="{CALENDAR_DATEFORMAT}"  id="jscal_trigger4" align="absmiddle">&nbsp;</slot></td>
+ 
+ 
+    
+    <!--    <td width="15%" class="dataLabel"><slot>{MOD.Only upload files from Sugar created in Sugar after}:</slot></td>
+    <td width="35%" class="dataLabel"><slot><input name='google_mafterdate_c' type="text" value="{GOOGLE_MAFTERDATE}" tabindex='2' size='15' maxlength='25' >&nbsp;</slot></td>
+ -->
+    </tr> 
+            
+			</table>
+		</td>
+	</tr>
+</table>
+<br />
+</div>
+
+
+           
+
+
+{JAVASCRIPT}
+<script type="text/javascript" language="Javascript">
+	// javascript moved to User.js
+	var old_load = window.onload;
+	window.onload = function() {
+		old_load();
+		enable_change_password_button();
+	}
+{getNameJs}
+{getNumberJs}
+{currencySymbolJs}
+	setSymbolValue(document.getElementById('currency_select').selectedIndex);
+	setSigDigits();
+
+{confirmReassignJs}
+
+
+</script>
+
+</form>
+
+<!-- END: main -->

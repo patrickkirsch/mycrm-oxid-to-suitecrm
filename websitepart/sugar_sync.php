@@ -373,7 +373,7 @@ function exportLexwareOrdersToSugar($iFromOrderNr = null, $iToOrderNr = null)
         $oUser  = oxNew("oxuser");
         $oUser->load($oOrder->oxorder__oxuserid->value);
 
-        $sExport = "<Bestellung zurückgestellt=\"Nein\" bearbeitet=\"Nein\" übertragen=\"Nein\">$sNewLine";
+        $sExport = "<Bestellung zurueckgestellt=\"Nein\" bearbeitet=\"Nein\" uebertragen=\"Nein\">$sNewLine";
         $sExport .= "<Bestellnummer>" . $oOrder->oxorder__oxordernr->value . "</Bestellnummer>$sNewLine";
         $sExport .= "<Currency>" . $oOrder->oxorder__oxcurrency->value . "</Currency>$sNewLine";
         $sExport .= "<CurrencyRate>" . $oOrder->oxorder__oxcurrate->value . "</CurrencyRate>$sNewLine";
